@@ -1,0 +1,11 @@
+/.ipynb_checkpoints
+/src/FinancesLib/DensityEstimation/__pycache__
+/src/FinancesLib/FeatureSelection/Analysis/__pycache__
+/src/FinancesLib/FeatureSelection/Metrics/__pycache__
+/src/FinancesLib/__pycache__
+/src/FinancesLib/Splines/__pycache__
+/src/dist
+/src/FinancesLib.egg-info
+/tests/__pycache__
+/tests/.ipynb_checkpoints
+
