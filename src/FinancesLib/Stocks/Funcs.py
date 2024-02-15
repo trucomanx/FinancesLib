@@ -47,4 +47,17 @@ def get_nmi_matrix(stock_list,period="24mo",post_name='.SA',bins=8):
         
     return C/np.max(C);
 
+import seaborn as sns
+import matplotlib.pyplot as plt
 
+def plot_stocks_heatmap(mat,stocks,cmap='gray',fontsize=13,title='')
+    sns.heatmap(mat, 
+                annot=True,
+                fmt='g', 
+                cmap=cmap,#"jet",
+                xticklabels=stocks,
+                yticklabels=stocks)
+    plt.ylabel('stocks',fontsize=fontsize)
+    plt.xlabel('stocks',fontsize=fontsize)
+    plt.title(title,fontsize=fontsize)
+    plt.show()
