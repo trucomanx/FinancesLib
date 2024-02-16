@@ -6,7 +6,7 @@ from sklearn.metrics import mutual_info_score
 
 ################################################################################
 
-def get_corr_matrix(stock_list,period="24mo",post_name='.SA'):
+def get_corr_matrix(stock_list,period="24mo",post_name=''):
 
     hist=dict();
     for stock in stock_list:
@@ -31,7 +31,7 @@ def calc_MI(x, y, bins):
     mi = mutual_info_score(None, None, contingency=c_xy)
     return mi
 
-def get_nmi_matrix(stock_list,period="24mo",post_name='.SA',bins=8):
+def get_nmi_matrix(stock_list,period="24mo",post_name='',bins=8):
 
     hist=dict();
     for stock in stock_list:
