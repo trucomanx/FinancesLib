@@ -80,8 +80,8 @@ def get_nmi_matrix(stock_list,period="24mo",post_name='.SA',bins=8):
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def plot_stocks_heatmap(mat,stocks,cmap='gray',fontsize=13,title=''):
-    plt.figure(figsize=(15,15))
+def plot_stocks_heatmap(mat,stocks,cmap='gray',fontsize=13,title='',figsize=(14,14)):
+    plt.figure(figsize=figsize)
     sns.heatmap(mat, 
                 annot=True,
                 fmt='g', 
