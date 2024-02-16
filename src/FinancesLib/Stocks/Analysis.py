@@ -43,6 +43,7 @@ def plot_bar_by_type(df,
     plt.bar(types, amounts,color=colors)
     for xt,yt in zip(types,amounts):
         plt.annotate(str(round(100*yt/TOT,1))+'%',(xt,yt),fontsize=fontsize)
+    plt.rcParams.update({'font.size': fontsize})
     plt.ylabel(ylabel,fontsize=fontsize)
     plt.xlabel(xlabel,fontsize=fontsize)
     plt.title(title,fontsize=fontsize)
