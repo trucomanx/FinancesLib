@@ -1,7 +1,10 @@
 #!/usr/bin/python
 import pandas as pd
 
-def load_cvs_nubank_rv(filename, active_type_list=['Ação']):
+def load_cvs_nuinvest_rv(filename, active_type_list=['Ação']):
+    '''
+    Carrega datos no forato do CSV de NUINVEST
+    '''
     df2 = pd.read_csv(  filename, 
                         encoding = "latin_1",
                         sep=None,

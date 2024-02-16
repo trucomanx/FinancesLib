@@ -23,7 +23,7 @@ def get_dataframe_of_stocks(stocks_list,labels_list,post_name=''):
                   'currentPrice',
                   'trailingPE',#P/L
                   'trailingEps',#LPA
-                  'trailingAnnualDividendYield',
+                  'dividendYield',
                   'beta',
                   ];
     '''

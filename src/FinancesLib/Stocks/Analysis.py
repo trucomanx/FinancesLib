@@ -19,7 +19,10 @@ def get_corr_matrix(stock_list,period="24mo",post_name=''):
       for n2 in range(len(stock_list)):
         x1=hist[stock_list[n1]]['Open'].to_numpy();
         x2=hist[stock_list[n2]]['Open'].to_numpy();
-
+        
+        print('x1.shape',x1.shape)
+        print('x2.shape',x2.shape)
+        
         C[n1,n2]=np.corrcoef(x1,x2)[0,1];
     return C;
 
