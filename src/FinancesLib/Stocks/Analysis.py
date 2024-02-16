@@ -66,11 +66,15 @@ def get_nmi_matrix(stock_list,period="24mo",post_name='',bins=8):
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def plot_stocks_heatmap(mat,stocks,cmap='gray',fontsize=13,title='',figsize=(14,14)):
+def plot_stocks_heatmap(mat,stocks,cmap='jet',fontsize=13,title='',figsize=(14,14),fmt=".1f",percentage=True):
+    MAT=mat.copy();
+    if percentage==True:
+        MAT=mat*100;
+    
     plt.figure(figsize=figsize)
-    sns.heatmap(mat, 
+    sns.heatmap(MAT, 
                 annot=True,
-                fmt='g', 
+                fmt=fmt, 
                 cmap=cmap,#"jet",
                 xticklabels=stocks,
                 yticklabels=stocks)
