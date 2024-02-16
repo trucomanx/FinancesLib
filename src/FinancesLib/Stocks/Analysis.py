@@ -82,3 +82,5 @@ def plot_stocks_heatmap(mat,stocks,cmap='jet',fontsize=13,title='',figsize=(14,1
     plt.xlabel('stocks',fontsize=fontsize)
     plt.title(title,fontsize=fontsize)
     plt.show()
+
+
