@@ -50,8 +50,14 @@ def get_nmi_matrix(stock_list,period="24mo",post_name='',bins=8):
       for n2 in range(len(stock_list)):
         x1=hist[stock_list[n1]]['Open'].to_numpy();
         x2=hist[stock_list[n2]]['Open'].to_numpy();
-
-        C[n1,n2]=calc_MI(x1,x2,bins);
+        
+        if (x1.size>0) and (x1.size>0):
+            L=x1.size;
+            if x1.size!=x2.size:
+                L=min(x1.size,x2.size);
+            C[n1,n2]=calc_MI(x1[0:L],x2[0:L],bins);
+        else:
+            C[n1,n2]=0.0;
         
     return C/np.max(C);
 
