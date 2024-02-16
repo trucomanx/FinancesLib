@@ -11,6 +11,7 @@ def print_info_of_stocks(stocks_list,post_name=''):
     for stock in stocks_list:
         handler = yf.Ticker(stock.upper()+post_name.upper())
         for keys,values in handler.info.items():
+            print('\n\n')
             print(keys+'::',values)
         
 ################################################################################
