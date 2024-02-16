@@ -81,6 +81,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 def plot_stocks_heatmap(mat,stocks,cmap='gray',fontsize=13,title=''):
+    plt.figure(figsize=(15,15))
     sns.heatmap(mat, 
                 annot=True,
                 fmt='g', 
