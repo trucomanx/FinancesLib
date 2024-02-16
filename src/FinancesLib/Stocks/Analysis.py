@@ -21,6 +21,7 @@ def get_corr_matrix(stock_list,period="24mo",post_name=''):
         x2=hist[stock_list[n2]]['Open'].to_numpy();
         
         if (x1.size>0) and (x1.size>0):
+            L=x1.size;
             if x1.size!=x2.size:
                 L=min(x1.size,x2.size);
             C[n1,n2]=np.corrcoef(x1[0:L],x2[0:L])[0,1];
