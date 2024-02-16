@@ -15,7 +15,7 @@ def load_cvs_nubank_rv(filename, active_type_list=['Ação']):
         if n==0:
             BOOL=df2['TIPO DE INVESTIMENTO'] == active_type_list[0];
         else:
-            BOOL=BOOL or (df2['TIPO DE INVESTIMENTO'] == active_type_list[n]);
+            BOOL= BOOL | (df2['TIPO DE INVESTIMENTO'] == active_type_list[n]);
     df2 = df2.loc[BOOL];
     df2 = df2[["DESCRIÇÃO","TIPO DE INVESTIMENTO","QUANTIDADE","VALOR BRUTO"]]
   
@@ -24,3 +24,5 @@ def load_cvs_nubank_rv(filename, active_type_list=['Ação']):
   #df2["QUANTIDADE"] = pd.to_numeric(df2["QUANTIDADE"])
 
     return df2;
+    
+#print(load_cvs_nubank_rv('/home/fernando/Downloads/Exportar_custodia_2024-02-16.csv', active_type_list=['Ação','BDR']));
