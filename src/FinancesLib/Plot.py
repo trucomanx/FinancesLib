@@ -61,8 +61,14 @@ def plot_bar2_by_type(df,
                  column_type:str,
                  column_amount1:str,
                  column_amount2:str,
+                 label_amount1=None,
+                 label_amount2=None,
                  en_grid=True,
-                 title='',xlabel='Type',ylabel='',figsize=(10,6),fontsize=13):
+                 title='',
+                 xlabel='Type',
+                 ylabel='',
+                 figsize=(10,6),
+                 fontsize=13):
     '''
     Crea un grafico de barras extrayendo datos desde el dataframe df.
     Los datos son agrupados por los tipos (set) encontrados en la columna column_type
@@ -71,6 +77,12 @@ def plot_bar2_by_type(df,
     setype  = set(df[column_type])
     dicamount1 = dict.fromkeys(setype, 0)
     dicamount2 = dict.fromkeys(setype, 0)
+    
+    if label_amount1==None:
+        label_amount1=str(column_amount1);
+        
+    if label_amount2==None:
+        label_amount2=str(column_amount2);
     
     Nr=df.shape[0];
     
