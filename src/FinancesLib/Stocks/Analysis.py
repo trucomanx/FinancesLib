@@ -28,8 +28,8 @@ def get_corr_matrix(stock_list,period="24mo",post_name='',verbose=True):
                 L=x1.size;
                 if x1.size!=x2.size:
                     L=min(x1.size,x2.size);
-                    x1=x1[-L-1:-1];
-                    x2=x2[-L-1:-1];
+                    x1=x1[-L:];
+                    x2=x2[-L:];
                     if verbose:
                         print(stock_list[n1],x1.size,np.std(x1),stock_list[n2],x2.size,np.std(x2))
                 BOOL=np.isnan(x1)|np.isnan(x2);
@@ -72,8 +72,8 @@ def get_nmi_matrix(stock_list,period="24mo",post_name='',nbins=8,verbose=True):
                 L=x1.size;
                 if x1.size!=x2.size:
                     L=min(x1.size,x2.size);
-                    x1=x1[-L-1:-1];
-                    x2=x2[-L-1:-1];
+                    x1=x1[-L:];
+                    x2=x2[-L:];
                     if verbose:
                         print(stock_list[n1],x1.size,np.std(x1),stock_list[n2],x2.size,np.std(x2))
                 BOOL=np.isnan(x1)|np.isnan(x2);
