@@ -101,8 +101,8 @@ def plot_bar2_by_type(df,
     TOT=np.sum(np.array(amounts1));
     
     plt.figure(figsize=figsize)
-    plt.bar(types, amounts1)
-    plt.bar(types, amounts2)
+    plt.bar(types, amounts1,label=label_amount1)
+    plt.bar(types, amounts2,label=label_amount2)
     for xt,yt in zip(types,amounts1):
         plt.annotate(   str(round(100*yt/TOT,1))+'%',
                         (xt,yt),
