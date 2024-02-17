@@ -67,6 +67,7 @@ def plot_bar2_by_type(df,
                  title='',
                  xlabel='Type',
                  ylabel='',
+                 legend_loc="upper right",
                  figsize=(10,6),
                  fontsize=13):
     '''
@@ -108,6 +109,7 @@ def plot_bar2_by_type(df,
                         (xt,yt),
                         fontsize=fontsize,
                         ha='center');
+    plt.legend(loc=legend_loc)
     plt.rcParams.update({'font.size': fontsize})
     plt.ylabel(ylabel,fontsize=fontsize)
     plt.xlabel(xlabel,fontsize=fontsize)
