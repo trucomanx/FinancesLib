@@ -8,6 +8,9 @@ import yfinance as yf
 ################################################################################
 
 def print_all_info_of_stocks(stocks_list,post_name='',separator='::'):
+    '''
+    Muestra por pantalla todas las informaciones de una lista de stoks
+    '''
     for stock in stocks_list:
         handler = yf.Ticker(stock.upper()+post_name.upper())
         print('\n\n')
@@ -17,6 +20,9 @@ def print_all_info_of_stocks(stocks_list,post_name='',separator='::'):
 ################################################################################
 
 def get_all_info_of_stock(stocks,post_name=''):
+    '''
+    Retorna un dict con todos los datos del stock
+    '''
     handler = yf.Ticker(stock.upper()+post_name.upper())
     return handler.info;
         
@@ -24,6 +30,13 @@ def get_all_info_of_stock(stocks,post_name=''):
 
 def get_info_of_stocks(stocks_list,labels_list,post_name=''):
     '''
+    Retorna un dataframe con informacion de una lista de stocks
+    
+    Observa los posibles elementos en labels_list usando 
+    la funcion get_all_info_of_stock() o print_all_info_of_stocks().
+    
+    Elementos de ejemplo:
+    
     labels_list=[ 'longName',
                   'sector',
                   'currentPrice',

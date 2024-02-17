@@ -7,18 +7,23 @@ import seaborn as sns
 
 ################################################################################
 def plot_bar_by_type(df,
-                 column_type_str,
-                 column_amount_str,
+                 column_type:str,
+                 column_amount:str,
                  cmap='jet',
                  en_grid=True,
                  title='',xlabel='Type',ylabel='',figsize=(10,6),fontsize=13):
-    setype  = set(df[column_type_str])
+    '''
+    Crea un grafico de barras extrayendo datos desde el dataframe df.
+    Los datos so agrupados por los tipos (set) encontrados en la columna column_type
+    y la altura de las barras se extraen desde la columan column_amount
+    '''
+    setype  = set(df[column_type])
     dicamount = dict.fromkeys(setype, 0)
     
     Nr=df.shape[0];
     
     for id in range(Nr):
-        dicamount[df[column_type_str][id]]=dicamount[df[column_type_str][id]]+df[column_amount_str][id];
+        dicamount[df[column_type][id]]=dicamount[df[column_type][id]]+df[column_amount][id];
     
     chd = matplotlib.colormaps[cmap];
     types=[];
@@ -55,7 +60,8 @@ def plot_bar_by_type(df,
 ################################################################################
 
 def plot_matrix_heatmap(mat,
-                        labels,
+                        labelsx:list,
+                        labelsy:list,
                         xlabel='labels',
                         ylabel='labels',
                         cmap='jet',
@@ -64,6 +70,11 @@ def plot_matrix_heatmap(mat,
                         figsize=(14,14),
                         fmt=".1f",
                         percentage=True):
+    '''
+    Crea un heatmap con los datos de la matriz map.
+    las etiquetas de las lineas y columnas estan agrupadas en las listas labelsx y labelsy, respectivamente.
+    '''
+    
     MAT=mat.copy();
     if percentage==True:
         MAT=mat*100;
@@ -73,8 +84,8 @@ def plot_matrix_heatmap(mat,
                 annot=True,
                 fmt=fmt, 
                 cmap=cmap,#"jet",
-                xticklabels=labels,
-                yticklabels=labels)
+                xticklabels=labelsx,
+                yticklabels=labelsy)
     plt.ylabel(xlabel,fontsize=fontsize)
     plt.xlabel(xlabel,fontsize=fontsize)
     plt.title(title,fontsize=fontsize)
