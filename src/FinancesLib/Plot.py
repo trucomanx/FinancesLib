@@ -14,16 +14,16 @@ def plot_bar_by_type(df,
                  title='',xlabel='Type',ylabel='',figsize=(10,6),fontsize=13):
     '''
     Crea un grafico de barras extrayendo datos desde el dataframe df.
-    Los datos so agrupados por los tipos (set) encontrados en la columna column_type
-    y la altura de las barras se extraen desde la columan column_amount
+    Los datos son agrupados por los tipos (set) encontrados en la columna column_type
+    y la altura de las barras se extraen desde la columa column_amount
     '''
     setype  = set(df[column_type])
     dicamount = dict.fromkeys(setype, 0)
     
     Nr=df.shape[0];
     
-    for id in range(Nr):
-        dicamount[df[column_type][id]]=dicamount[df[column_type][id]]+df[column_amount][id];
+    for ii in range(Nr):
+        dicamount[df[column_type][ii]]=dicamount[df[column_type][ii]]+df[column_amount][ii];
     
     chd = matplotlib.colormaps[cmap];
     types=[];
@@ -56,6 +56,52 @@ def plot_bar_by_type(df,
     plt.grid(en_grid)
     plt.show()
 
+################################################################################
+def plot_bar2_by_type(df,
+                 column_type:str,
+                 column_amount1:str,
+                 column_amount2:str,
+                 en_grid=True,
+                 title='',xlabel='Type',ylabel='',figsize=(10,6),fontsize=13):
+    '''
+    Crea un grafico de barras extrayendo datos desde el dataframe df.
+    Los datos son agrupados por los tipos (set) encontrados en la columna column_type
+    y la altura de las barras se extraen desde las columas column_amount1 y column_amount2
+    '''
+    setype  = set(df[column_type])
+    dicamount1 = dict.fromkeys(setype, 0)
+    dicamount2 = dict.fromkeys(setype, 0)
+    
+    Nr=df.shape[0];
+    
+    for ii in range(Nr):
+        dicamount1[df[column_type][ii]]=dicamount1[df[column_type][ii]]+df[column_amount1][ii];
+        dicamount2[df[column_type][ii]]=dicamount2[df[column_type][ii]]+df[column_amount2][ii];
+    
+    types=[];
+    amounts1=[];
+    amounts2=[];
+    for key,value in dicamount1.items():
+        types.append(key);
+        amounts1.append(value);
+        amounts2.append(dicamount2[key]);
+    
+    TOT=np.sum(np.array(amounts1));
+    
+    plt.figure(figsize=figsize)
+    plt.bar(types, amounts1)
+    plt.bar(types, amounts2)
+    for xt,yt in zip(types,amounts1):
+        plt.annotate(   str(round(100*yt/TOT,1))+'%',
+                        (xt,yt),
+                        fontsize=fontsize,
+                        ha='center');
+    plt.rcParams.update({'font.size': fontsize})
+    plt.ylabel(ylabel,fontsize=fontsize)
+    plt.xlabel(xlabel,fontsize=fontsize)
+    plt.title(title,fontsize=fontsize)
+    plt.grid(en_grid)
+    plt.show()
 
 ################################################################################
 
