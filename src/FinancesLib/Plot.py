@@ -116,7 +116,7 @@ def plot_bar2_gain_by_type(df,
     plt.rcParams.update({'font.size': fontsize})
     plt.ylabel(ylabel,fontsize=fontsize)
     plt.xlabel(xlabel,fontsize=fontsize)
-    plt.xticks(X, types)
+    #plt.xticks(X, types)
     plt.title(title,fontsize=fontsize)
     plt.grid(en_grid)
     plt.show()
