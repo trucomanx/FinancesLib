@@ -90,7 +90,7 @@ def calc_MI(x, y, nbins):
     return mi
 
 ################################################################################
-def get_corr_vector(stock0,stock_list,period="24mo",post_name='',nbins=8,verbose=False):
+def get_nmi_vector(stock0,stock_list,period="24mo",post_name='',nbins=8,verbose=False):
     '''
     Retorna el vector de informacion mutua de los precios de cada un de las acciones de 
     una lista de acciones stock_list.
@@ -129,7 +129,7 @@ def get_corr_vector(stock0,stock_list,period="24mo",post_name='',nbins=8,verbose
             if verbose:
                 print(stock_list[n1],x1.size,stock0,x0.size)
             C[n1]=0.0;
-    return C;
+    return C/calc_MI(x0,x0,nbins);
 
 ################################################################################
 
