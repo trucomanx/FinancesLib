@@ -100,13 +100,13 @@ def plot_bar2_gain_by_type(df,
         amounts2.append(dicamount2[key]);
     
     X = np.arange(len(types))  # the label locations
-    width = 0.25  # the width of the bars
+    width = 0.4  # the width of the bars
     
     TOT=np.sum(np.array(amounts1));
     
     plt.figure(figsize=figsize)
     plt.bar(X    , amounts1,width=width,label=label_amount1)
-    plt.bar(X+0.5, amounts2,width=width,label=label_amount2)
+    plt.bar(X+width/2.0, amounts2,width=width,label=label_amount2)
     #for xt,yt in zip(types,amounts1):
     #    plt.annotate(   str(round(100*yt/TOT,1))+'%',
     #                    (xt,yt),
