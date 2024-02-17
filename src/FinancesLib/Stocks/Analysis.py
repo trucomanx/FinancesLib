@@ -28,7 +28,7 @@ def get_corr_matrix(stock_list,period="24mo",post_name=''):
             L=x1.size;
             if x1.size!=x2.size:
                 L=min(x1.size,x2.size);
-                print(stock_list[n1],x1.size,stock_list[n2],x1.size)
+                print(stock_list[n1],x1.size,stock_list[n2],x2.size)
             C[n1,n2]=np.corrcoef(x1[0:L],x2[0:L])[0,1];
         else:
             C[n1,n2]=0.0;
@@ -64,9 +64,10 @@ def get_nmi_matrix(stock_list,period="24mo",post_name='',nbins=8):
             L=x1.size;
             if x1.size!=x2.size:
                 L=min(x1.size,x2.size);
-                print(stock_list[n1],x1.size,stock_list[n2],x1.size)
+                print(stock_list[n1],x1.size,stock_list[n2],x2.size)
             C[n1,n2]=calc_MI(x1[0:L],x2[0:L],nbins);
         else:
+            print(stock_list[n1],x1.size,stock_list[n2],x2.size)
             C[n1,n2]=0.0;
         
     return C/np.max(C);
