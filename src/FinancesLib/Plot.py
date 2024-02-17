@@ -107,11 +107,11 @@ def plot_bar2_gain_by_type(df,
     plt.figure(figsize=figsize)
     plt.bar(X    , amounts1,width=width,label=label_amount1)
     plt.bar(X+width/2.0, amounts2,width=width,label=label_amount2)
-    #for xt,yt in zip(types,amounts1):
-    #    plt.annotate(   str(round(100*yt/TOT,1))+'%',
-    #                    (xt,yt),
-    #                    fontsize=fontsize,
-    #                    ha='center');
+    for n in range(len(types)):
+        plt.annotate(   str(round(100*(amounts1[n]/amounts2[n]-1),1))+'%',
+                        (types[n],amounts1[n]),
+                        fontsize=fontsize,
+                        ha='center');
     plt.legend(loc=legend_loc)
     plt.rcParams.update({'font.size': fontsize})
     plt.ylabel(ylabel,fontsize=fontsize)
