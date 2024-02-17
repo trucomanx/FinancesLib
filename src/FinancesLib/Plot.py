@@ -124,10 +124,10 @@ def plot_bar2_gain_by_type(df,
 ################################################################################
 
 def plot_matrix_heatmap(mat,
-                        labelsx:list,
-                        labelsy:list,
-                        xlabel='labels',
-                        ylabel='labels',
+                        names_row:list,
+                        names_col:list,
+                        label_col='labels',
+                        label_row='labels',
                         cmap='jet',
                         title='',
                         fontsize=13,
@@ -136,7 +136,7 @@ def plot_matrix_heatmap(mat,
                         percentage=True):
     '''
     Crea un heatmap con los datos de la matriz map.
-    las etiquetas de las lineas y columnas estan agrupadas en las listas labelsx y labelsy, respectivamente.
+    las etiquetas de las lineas y columnas estan agrupadas en las listas names_col y names_row, respectivamente.
     '''
     
     MAT=mat.copy();
@@ -148,10 +148,10 @@ def plot_matrix_heatmap(mat,
                 annot=True,
                 fmt=fmt, 
                 cmap=cmap,#"jet",
-                xticklabels=labelsx,
-                yticklabels=labelsy)
-    plt.ylabel(xlabel,fontsize=fontsize)
-    plt.xlabel(xlabel,fontsize=fontsize)
+                xticklabels=names_col,
+                yticklabels=names_row)
+    plt.ylabel(label_row,fontsize=fontsize)
+    plt.xlabel(label_col,fontsize=fontsize)
     plt.title(title,fontsize=fontsize)
     plt.show()
 
