@@ -98,13 +98,13 @@ def add_info_of_stocks(df_in,column_name,post_name='',
     if price==True:
         df['price']=[np.nan]*N;
     if pl==True:
-        df['pl']=[np.nan]*N;
+        df['P/L']=[np.nan]*N;
     if lpa==True:
-        df['lpa']=[np.nan]*N;
+        df['LPA']=[np.nan]*N;
     if pvp==True:
-        df['pvp']=[np.nan]*N;
+        df['P/VP']=[np.nan]*N;
     if dy==True:
-        df['dy%']=[0.0]*N;
+        df['DY%']=[0.0]*N;
     if beta==True:
         df['beta']=[np.nan]*N;
 
@@ -124,16 +124,16 @@ def add_info_of_stocks(df_in,column_name,post_name='',
             df.loc[n,'price']=float(handler.info['currentPrice']);
 
         if pl==True and 'trailingPE' in handler.info.keys():
-            df.loc[n,'pl']=float(handler.info['trailingPE']);
+            df.loc[n,'P/L']=float(handler.info['trailingPE']);
 
         if lpa==True and 'trailingEps' in handler.info.keys():
-            df.loc[n,'lpa']=float(handler.info['trailingEps']);
+            df.loc[n,'LPA']=float(handler.info['trailingEps']);
         
         if pvp==True and 'priceToBook' in handler.info.keys():
-            df.loc[n,'pvp']=float(handler.info['priceToBook']);
+            df.loc[n,'P/VP']=float(handler.info['priceToBook']);
 
         if dy==True and 'trailingAnnualDividendYield' in handler.info.keys():
-            df.loc[n,'dy%']=float(handler.info['trailingAnnualDividendYield'])*100;
+            df.loc[n,'DY%']=float(handler.info['trailingAnnualDividendYield'])*100;
 
         if beta==True and 'beta' in handler.info.keys():
             df.loc[n,'beta']=float(handler.info['beta']);
