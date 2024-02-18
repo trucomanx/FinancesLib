@@ -73,6 +73,7 @@ def get_info_of_stocks(stocks_list,labels_list,post_name=''):
 
 def add_info_of_stocks(df_in,column_name,post_name='',
                        longname=True,
+                       industry=True,
                        sector=True,
                        price=True,
                        pl=True,
@@ -90,6 +91,8 @@ def add_info_of_stocks(df_in,column_name,post_name='',
 
     if longname==True:
         df['longName']=['']*N;
+    if industry==True:
+        df['industry']=['']*N;
     if sector==True:
         df['sector']=['']*N;
     if price==True:
@@ -110,10 +113,13 @@ def add_info_of_stocks(df_in,column_name,post_name='',
       
         if longname==True and 'longName' in handler.info.keys():
             df.loc[n,'longName']=handler.info['longName'];
-
-        if sector==True and 'industryKey' in handler.info.keys():
-            df.loc[n,'sector']=handler.info['industryKey'];
-
+        
+        if industry==True and 'industry' in handler.info.keys():
+            df.loc[n,'industry']=handler.info['industry'];
+        
+        if sector==True and 'sector' in handler.info.keys():
+            df.loc[n,'sector']=handler.info['sector'];
+        
         if price==True and 'currentPrice' in handler.info.keys():
             df.loc[n,'price']=float(handler.info['currentPrice']);
 
