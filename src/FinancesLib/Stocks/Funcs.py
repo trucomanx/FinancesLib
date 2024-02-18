@@ -15,7 +15,7 @@ def print_all_info_of_stocks(stocks_list,post_name='',separator='::'):
         handler = yf.Ticker(stock.upper()+post_name.upper())
         print('\n\n')
         for keys,values in handler.info.items():
-            print(keys+'separator',values)
+            print(keys+separator,values)
 
 ################################################################################
 
@@ -68,5 +68,9 @@ def get_info_of_stocks(stocks_list,labels_list,post_name=''):
     
         init=False;
     return DF;
+
+################################################################################
+
+
 
 
