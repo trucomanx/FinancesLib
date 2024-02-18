@@ -71,6 +71,67 @@ def get_info_of_stocks(stocks_list,labels_list,post_name=''):
 
 ################################################################################
 
+def add_info_of_stocks(df_in,column_name,post_name='',
+                       longname=True,
+                       sector=True,
+                       price=True,
+                       pl=True,
+                       lpa=True,
+                       pvp=True,
+                       dy=True,
+                       beta=True):
+    '''
 
+    '''
+
+    N=df_in.shape[0];
+
+    df=df_in.reset_index(drop=True);
+
+    if longname==True:
+        df['longName']=['']*N;
+    if sector==True:
+        df['sector']=['']*N;
+    if price==True:
+        df['price']=[np.nan]*N;
+    if pl==True:
+        df['pl']=[np.nan]*N;
+    if lpa==True:
+        df['lpa']=[np.nan]*N;
+    if pvp==True:
+        df['pvp']=[np.nan]*N;
+    if dy==True:
+        df['dy%']=[0.0]*N;
+    if beta==True:
+        df['beta']=[np.nan]*N;
+
+    for n in range(N):
+        handler = yf.Ticker(df.at[n,column_name].upper()+post_name.upper())
+      
+        if longname==True and 'longName' in handler.info.keys():
+            df.loc[n,'longName']=handler.info['longName'];
+
+        if sector==True and 'sector' in handler.info.keys():
+            df.loc[n,'sector']=handler.info['sector'];
+
+        if price==True and 'currentPrice' in handler.info.keys():
+            df.loc[n,'price']=float(handler.info['currentPrice']);
+
+        if pl==True and 'trailingPE' in handler.info.keys():
+            df.loc[n,'pl']=float(handler.info['trailingPE']);
+
+        if lpa==True and 'trailingEps' in handler.info.keys():
+            df.loc[n,'lpa']=float(handler.info['trailingEps']);
+        
+        if pvp==True and 'priceToBook' in handler.info.keys():
+            df.loc[n,'pvp']=float(handler.info['priceToBook']);
+
+        if dy==True and 'trailingAnnualDividendYield' in handler.info.keys():
+            df.loc[n,'dy%']=float(handler.info['trailingAnnualDividendYield'])*100;
+
+        if beta==True and 'beta' in handler.info.keys():
+            df.loc[n,'beta']=float(handler.info['beta']);
+
+    return df;
 
 
