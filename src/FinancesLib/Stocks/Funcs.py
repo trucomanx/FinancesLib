@@ -111,8 +111,8 @@ def add_info_of_stocks(df_in,column_name,post_name='',
         if longname==True and 'longName' in handler.info.keys():
             df.loc[n,'longName']=handler.info['longName'];
 
-        if sector==True and 'sector' in handler.info.keys():
-            df.loc[n,'sector']=handler.info['sector'];
+        if sector==True and 'industryKey' in handler.info.keys():
+            df.loc[n,'sector']=handler.info['industryKey'];
 
         if price==True and 'currentPrice' in handler.info.keys():
             df.loc[n,'price']=float(handler.info['currentPrice']);
